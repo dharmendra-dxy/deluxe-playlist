@@ -55,7 +55,7 @@ export default function Player() {
           {/* Album art */}
           <div
             className={[
-              "relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl md:h-16 md:w-16 md:rounded-full",
+              "relative h-14 w-14 shrink-0 overflow-hidden rounded-full md:h-16 md:w-16",
               "border border-white/30 shadow-xl",
               "transition-transform duration-700",
               isPlaying ? "animate-[music-spin_8s_linear_infinite]" : "",

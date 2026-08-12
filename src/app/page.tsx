@@ -1,6 +1,7 @@
 import { Yatra_One } from "next/font/google";
 import Header from "@/components/Header";
 import Player from "@/components/Player";
+import SceneBackground from "@/components/SceneBackground";
 
 const yatra = Yatra_One({
   subsets: ["devanagari", "latin"],
@@ -10,11 +11,7 @@ const yatra = Yatra_One({
 export default function Home() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-black">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-[url('/bg/scene-tall.png')] bg-cover bg-center bg-no-repeat md:bg-[url('/bg/scene-wide.png')]"
-        aria-hidden
-      />
+      <SceneBackground />
       <div className="absolute inset-0 bg-black/10" aria-hidden />
 
       <Header />
