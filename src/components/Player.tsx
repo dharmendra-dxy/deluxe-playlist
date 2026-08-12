@@ -51,7 +51,7 @@ export default function Player() {
       />
 
       <div className="absolute inset-x-0 bottom-0 z-20 flex justify-center px-3 pb-4 md:px-8 md:pb-8">
-        <div className="flex w-full max-w-md items-center gap-3 rounded-[28px] bg-gradient-to-r from-[#4a2f28]/90 to-[#7a4a3a]/80 p-2.5 pr-4 shadow-lg backdrop-blur-md transition-all duration-500 md:max-w-2xl md:gap-4 md:rounded-full md:p-3 md:pr-6">
+        <div className="flex w-full max-w-md items-center gap-3 rounded-[28px] border border-white/20 bg-white/10 p-2.5 pr-4 shadow-xl backdrop-blur-sm backdrop-saturate-150 transition-all duration-500 md:max-w-2xl md:gap-4 md:rounded-full md:p-3 md:pr-6">
           {/* Album art */}
           <div
             className={[
