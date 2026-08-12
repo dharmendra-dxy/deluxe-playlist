@@ -35,6 +35,7 @@ export function useYouTubePlayer(
 ): YouTubePlayerState & YouTubePlayerControls {
   const playerRef = useRef<YT.Player | null>(null);
   const progressTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const wasPlayingBeforeHiddenRef = useRef(false);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -152,9 +153,25 @@ export function useYouTubePlayer(
 
     initializePlayer();
 
+    function handleVisibilityChange() {
+      const player = playerRef.current;
+      if (!player) return;
+
+      if (document.hidden) {
+        const playerState = player.getPlayerState();
+        wasPlayingBeforeHiddenRef.current = playerState === YT.PlayerState.PLAYING;
+      } else if (wasPlayingBeforeHiddenRef.current) {
+        player.playVideo();
+        wasPlayingBeforeHiddenRef.current = false;
+      }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     return () => {
       mounted = false;
       stopTimer();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       playerRef.current?.destroy();
       playerRef.current = null;
     };
